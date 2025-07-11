@@ -1,13 +1,13 @@
-# Document Processing API
+# Document Processing Application
 
-This API processes shipment documents and fills out a form with the extracted information.
+This API processes shipment documents and data is made readily available to user on UI
 
 ## Setup
 
 1. Clone the repository
 2. Install dependencies: `pip install -r requirements.txt`
 3. Run the API: `python -m app.main`
-4. You may access the API at [`http://localhost:8000/docs`](http://localhost:8000/docs)
+4. You may access the API docs at [`http://localhost:8000/docs`](http://localhost:8000/docs)
 
 ## API Endpoints
 

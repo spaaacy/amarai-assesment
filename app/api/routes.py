@@ -5,11 +5,10 @@ import tempfile
 
 from app.services.document_processor import process_documents
 from app.services.llm_service import extract_field_from_document
-from app.services.form_filler import fill_form
 
 router = APIRouter()
 
-@router.post("/process-documents")
+@router.post("/process-documents", response_model=dict)
 async def process_documents_endpoint(
     files: List[UploadFile] = File(...)
 ):
@@ -30,11 +29,8 @@ async def process_documents_endpoint(
     # Extract data from document
     extracted_data = extract_field_from_document(document_data)
 
-    # Fill form
-    success = fill_form(extracted_data)
-
     # Clean up temp files
     for path in temp_file_paths:
         os.unlink(path)
 
-    return {"success": success} 
+    return {"extracted_data": extracted_data} 
