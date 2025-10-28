@@ -46,14 +46,17 @@ async def process_documents_endpoint(
 
         # Process documents to extract text
         document_data = process_documents(temp_file_paths)
-        print(document_data)
 
         # Extract structured data using LLM
         extracted_data = extract_field_from_document(document_data)
 
+        print(extracted_data)
         return extracted_data
+        # return {'bill_of_lading_number': 'AAA', 'container_number': "None", 'consignee_name': "None", 'consignee_address': "None", 'date_of_export': "None", 'line_items_count': 123, 'average_gross_weight': "None", 'average_price': None}
+        
 
     except Exception as e:
+        print(e)
         raise HTTPException(status_code=500, detail=f"Error processing documents: {str(e)}")
 
     finally:
